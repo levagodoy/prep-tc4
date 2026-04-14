@@ -30,7 +30,7 @@ estimator_guide = st.Page(
 
 ejercicios = st.Page(
     "frontend/code/ejercicios.py", 
-    title="Practica con R"
+    title="Práctica con R"
 )
 
 #sidebar
