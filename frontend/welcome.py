@@ -19,12 +19,12 @@ st.header("🛠️ ¿Cómo usar los Simuladores?")
 # Paso 1: Configuración
 st.markdown("### 1. Configura tu dado trucado")
 
-col1, col_img, col_text, col4 = st.columns([0.5, 1.5, 2, 0.5])
+col1, col_img, col_text, col4 = st.columns([1.0, 1.0, 2.5, 0.5])
 
 with col_img:
     # Asegúrate de que la ruta de la imagen sea la correcta
     try:
-        st.image("frontend/media/config.png", caption="Panel de Pesos en la Barra Lateral", use_container_width=True)
+        st.image("frontend/media/config.png", caption="Panel de Probabilidades en la Barra Lateral", use_container_width=True)
     except:
         st.info("🖼️ *(Aquí va la imagen de tu menú de configuración)*")
 
@@ -32,9 +32,9 @@ with col_text:
     st.write("""
     En la barra lateral izquierda encontrarás los deslizadores de **Configuración del Dado**.
     
-    * **¿Cómo funcionan?**: No son probabilidades estrictas (que suman 1), sino **'pesos'**. 
-    * **Ejemplo**: Si pones todos en `1.0`, el dado es justo. Si pones el número 5 en `10.0` y el resto en `1.0`, la cara 5 será 10 veces más probable de salir que cualquiera de las demás.
-    * **Experimenta!**: Prueba configuraciones extremas para ver cómo afectan los resultados teóricos y simulados.
+    * **¿Cómo funcionan?**: Estas barras te permiten ajustar directamente las **probabilidades** de cada cara del dado. La suma de todas las barras siempre se mantendrá exactamente en 1, así que al mover una, las demás se ajustarán progresivamente para compensar.
+    * **Ejemplo**: Si la probabilidad base es cercana a `0.16` (1/6), el dado será justo. Si aumentas mucho la del número 5 a `0.80`, verás que sacar un 5 se vuelve altamente seguro.
+    * **¡Experimenta!**: Prueba configuraciones extremas para ver cómo afectan los resultados teóricos y simulados.
     """)
 
 # Paso 2: Parámetros

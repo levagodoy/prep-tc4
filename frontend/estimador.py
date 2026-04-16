@@ -1,4 +1,4 @@
-from backend.funcs import sim_muestra, stat_poblacion, add_footer
+from backend.funcs import sim_muestra, stat_poblacion, add_footer, render_prob_sliders
 
 import numpy as np
 import streamlit as st
@@ -9,8 +9,7 @@ st.markdown("<h1 style='text-align: center;'>Estimando, Estimador y Estimado</h1
 add_footer()
 
 st.sidebar.header("Configuración del Dado:")
-pesos = [st.sidebar.slider(f"Peso para {i}", 0.0, 10.0, 1.0, key=f"est_w{i}") for i in range(1, 7)]
-pesos = np.array(pesos)
+pesos = render_prob_sliders("est")
 
 st.sidebar.header("Parámetro de la Muestra:")
 n_dados = st.sidebar.number_input("Tamaño de una sola muestra (n):", 2, 500, 100)

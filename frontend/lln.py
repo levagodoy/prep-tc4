@@ -1,4 +1,4 @@
-from backend.funcs import stat_poblacion, add_footer
+from backend.funcs import stat_poblacion, add_footer, render_prob_sliders
 
 import streamlit as st
 import numpy as np
@@ -12,8 +12,7 @@ add_footer()
 # --- SIDEBAR ---
 st.sidebar.header("Configuración del Dado:")
 # Agregamos la key única para lln_w{i} para que no choque con las otras páginas
-pesos = [st.sidebar.slider(f"Peso para {i}", 0.0, 10.0, 1.0, key=f"lln_w{i}") for i in range(1,7)] 
-pesos = np.array(pesos)
+pesos = render_prob_sliders("lln")
 
 # Parámetro principal (Lo ponemos un poco más alto para ver mejor la convergencia)
 n_pasos = st.slider("Número de lanzamientos totales (n):", 50, 10000, 1000, step=50)

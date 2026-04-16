@@ -1,4 +1,4 @@
-from backend.funcs import sim_muestra, stat_poblacion, sacar_prob, add_footer
+from backend.funcs import sim_muestra, stat_poblacion, sacar_prob, add_footer, render_prob_sliders
 
 import numpy as np
 import streamlit as st
@@ -10,8 +10,7 @@ st.markdown("<h1 style='text-align: center;'>Intervalos de Confianza</h1>", unsa
 add_footer()
 
 st.sidebar.header("Configuración del Dado:")
-pesos = [st.sidebar.slider(f"Peso para {i}", 0.0, 10.0, 1.0, key=f"ic_w{i}") for i in range(1,7)] 
-pesos = np.array(pesos)
+pesos = render_prob_sliders("ic")
 
 st.sidebar.header("Parámetros del Intervalo:")
 n_dados = st.sidebar.number_input("Tamaño de la muestra (n):", 2, 500, 30) 

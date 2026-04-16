@@ -1,4 +1,4 @@
-from backend.funcs import sim_muestra, stat_poblacion, sacar_prob, add_footer
+from backend.funcs import sim_muestra, stat_poblacion, sacar_prob, add_footer, render_prob_sliders
 
 import numpy as np
 import streamlit as st
@@ -12,11 +12,9 @@ add_footer()
 st.sidebar.header("Configuración del Dado:")
 
 #st.sb.slider(texto, min, max, default)
-pesos = [st.sidebar.slider(f"Peso para {i}", 0.0, 10.0, 1.0) for i in range(1,7)] #4to parametro a key=f["w{i}"]
+pesos = render_prob_sliders("tlc")
 n_dados = st.sidebar.number_input(f"Número de dados por muestra (n):", 0, 100, 30) 
 n_muestras = st.sidebar.number_input(f"Número de muestras:", 1, 40000, 10000)
-
-pesos = np.array(pesos)
 
 media_sim = sim_muestra(pesos, n_dados, n_muestras)
 mu, var = stat_poblacion(pesos)
